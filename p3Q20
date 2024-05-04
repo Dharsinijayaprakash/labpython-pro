@@ -1,0 +1,23 @@
+def get_distinct_values(data):
+    distinct_values = set()
+    for item in data:
+        for value in item.values():
+            distinct_values.add(value)
+    return distinct_values
+
+# Sample data
+sample_data = [
+    {"V": "S001"},
+    {"V": "S002"},
+    {"VI": "S001"},
+    {"VI": "S005"},
+    {"VII": "S005"},
+    {"V": "S009"},
+    {"VIII": "S007"}
+]
+
+# Get distinct values
+unique_values = get_distinct_values(sample_data)
+
+# Print unique values
+print("Unique Values:", unique_values)

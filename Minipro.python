@@ -1,0 +1,55 @@
+from tkinter import*
+import tkinter as tk
+ 
+u=Tk()
+u.title("BP ANALYSIS")
+u.geometry("700x700")
+u.configure(bg="lavender")
+txt1=IntVar()
+txt2=IntVar()
+result=StringVar()
+def bp():
+    v=txt1.get()
+    i=txt2.get()
+    if v==120 and i==80:
+        result.set('Normal Blood Pressure')
+    elif v<120 and i<80:
+        result.set('Low Blood Pressure')
+    elif (v>=120 and v<130) and i<80:
+        result.set('Elevated Blood Pressure')
+    elif (v>=130 and v<140)or(i>=80 and i<89):
+        result.set('First Stage High Blood Pressure')
+    else:
+        result.set('Second Stage High Blood Pressure')
+rate=IntVar()
+ans=StringVar()
+def heart_rate():
+    k = rate.get()
+    if k < 70:
+        ans.set("Low heart rate")
+    elif k >= 70 and k <= 90:
+        ans.set("Normal heart rate")
+    else:
+        ans.set("High heart rate")
+def clr():
+    txt1.set("")
+    txt2.set("")
+    result.set("")
+    rate.set("")
+    ans.set("")
+Label(u,text="SYSTOLE :",font=('times new roman',30,'bold'),bg="lavender",fg="black").place(x=30,y=250)
+Label(u,text="DIASTOLE :",font=('times new roman',30,'bold'),bg="lavender",fg="black").place(x=30,y=350)
+Label(u,text="BLOOD PRESSURE ANALYSIS",font=('broadway',30,'bold'),fg="black",bg="lavender").place(x=350,y=50)
+Label(u,text="HEART RATE ANALYSIS",font=('broadway',30,'bold'),fg="black",bg="lavender").place(x=400,y=100)
+Entry(u,width=15,textvariable=txt1,font=('Arial',25),bg="white").place(x=250,y=250)
+Entry(u,width=15,textvariable=txt2,font=('Arial',25),bg="white").place(x=280,y=350)
+Label(u,text="RESULT :",font=('times new roman',30,'bold'),bg="lavender",fg="black").place(x=30,y=450)
+Entry(u,width=26,textvariable=result,font=('Arial',25),bg="white").place(x=240,y=450)
+Button(u,text="ANALYSE",font=('Arial',20,'bold'),width=15,bg='violet',command=bp).place(x=400,y=550)
+Label(u,text="HEART RATE :",font=('times new roman',30,'bold'),bg="lavender",fg="black").place(x=800,y=250)
+Entry(u,width=10,textvariable=rate,font=('Arial',25),bg="white").place(x=1100,y=250)
+Label(u,text="OUTPUT:",font=('times new roman',30,'bold'),bg="lavender",fg="black").place(x=800,y=350)
+Entry(u,width=15,textvariable=ans,font=('Arial',25),bg="white").place(x=1000,y=350)
+Button(u,text="CLICK",font=('Arial',20,'bold'),width=15,bg='violet',command=heart_rate).place(x=900,y=450)
+Button(u,text="CLEAR",font=('Arial',20,'bold'),width=15,bg='violet',command=clr).place(x=100,y=550)
+u.mainloop()
